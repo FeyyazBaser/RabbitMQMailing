@@ -76,7 +76,7 @@ namespace RabbitMQConfirmMail.Controllers
                     var channel = _rabbitMQClientService.Connect();
                     channel.BasicQos(0, 1, false);
                     var consumer = new AsyncEventingBasicConsumer(channel);
-                    channel.BasicConsume(RabbitMQClientService.queueName, false, consumer);
+                    channel.BasicConsume(RabbitMQClientService.queueName, true, consumer);
                     consumer.Received += Consumer_Received;
                     return RedirectToAction("ConfirmMail", "Account");
                 }
