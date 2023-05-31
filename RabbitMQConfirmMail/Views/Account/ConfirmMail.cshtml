@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "ConfirmMail";
+}
+
+<h1>Confirm Mail</h1>
+
+<form asp-controller="Account" asp-action="VerifyMailCode">
+    <div class="col-md-6">
+
+        @{
+            var code = System.IO.File.ReadAllText("Confirmation.txt");
+        }
+         <label>Confirmation Code</label>
+        <input class="form-control" style="margin-top:10px" type="text" name="confirmationCode" value="@code" />
+       
+        <input type="submit" style="margin-top:10px" class="btn btn-success" value="Confirm" />
+
+    </div>
+
+</form>
+
